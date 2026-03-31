@@ -15,6 +15,8 @@ use App\Http\Middleware\LogAcessoMiddleware;
 
 Route::get('/', [App\Http\Controllers\Principal::class, 'principal']);
 
+Route::get('/aluno/show', [App\Http\Controllers\Aluno::class, 'show'])->name('aluno.show');
+
 
 
 
