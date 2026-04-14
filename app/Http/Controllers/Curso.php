@@ -8,7 +8,7 @@ class Curso extends Controller
 {
     function show() {
         $cursos = [
-            (object) ['nome' => 'Análise e Desenvolvimento de Sistemas', 'horario' => 'das 14:30 ás 16:30' ]
+            (object) ['nome' => 'Análise e Desenvolvimento de Sistemas', 'horario' => 'das 14:30 ás 16:30' ],
             (object) ['nome' => 'Mécatronica', 'horario' => 'das 20:30 ás 22:30']
         ];
 
