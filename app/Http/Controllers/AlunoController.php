@@ -2,28 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class AlunoController extends Controller
 {
-    function index () {
+    function index(){
         return view('aluno.index');
     }
 
-    function adicionar (Request $dados ) {
-        $aluno = new \app\Models\AlunoModel();
+    function add(Request $dados) {
+        dd($dados->all());
+        $aluno = new \App\Models\AlunoModel();
         $aluno::create($dados->all());
-        return view('aluno.index', ['suceeso' => 'Aluno Cadastrado! ']);
 
-    function remover ( ) {
 
-    }
-    function atualizar ( ) {
+        //recuperando Todos os alunos do banco de dados  e enviando para  a view
 
+        $alunos = new \App\Models\AlunoMode();
+        //testar dps
+        return view('aluno.index', ['sucess' => 'Cadastrado!', 'alunos' =>$alunos::all()]);
     }
-    function consultar ( ) {
-    }
-    
-    }
-
 }
