@@ -36,6 +36,15 @@ Route::prefix('/aluno' )->group(function(){
 
 
 
+/* Criando uma rota curso*/
+Route::prefix('/curso')->group(function(){
+    Route::get('/index', [App\Http\Controllers\CursoController::class, 'index'])->name('curso.index');
+    Route::post('/adicionar', [App\Http\Controllers\CursoController::class, 'adicionar'])->name('curso.adicionar');
+    Route::post('/remover', [App\Http\Controllers\CursoController::class, 'remover'])->name('curso.remover');
+    Route::post('/atualizar', [App\Http\Controllers\CursoController::class, 'atualizar'])->name('curso.atualizar');
+    Route::get('/consultar', [App\Http\Controllers\Principal::class, 'principal'])->name('curso.consultar');
+});
+
 
 
 

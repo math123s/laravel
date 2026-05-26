@@ -11,18 +11,15 @@ class AlunoController extends Controller
     }
 
     function adicionar (Request $dados ) {
-        $aluno = new \app\Models\AlunoModel();
+        $aluno = new \App\Models\AlunoModel();
         $aluno::create($dados->all());
-        return view('aluno.index', ['suceeso' => 'Aluno Cadastrado! ']);
 
-    function remover ( ) {
+        //Recuperando todos os alunos do banco e enviando para A View
 
-    }
-    function atualizar ( ) {
 
-    }
-    function consultar ( ) {
-    }
+        $aluno = new \App\Models\AlunoModel();
+
+        return view('aluno.index', ['sucesso'=>'Cadastrado!', 'alunos' =>$aluno::all()]);
     
     }
 
