@@ -9,7 +9,21 @@
         <input type="time" name="periodo" id="periodo">
 
         <button type="submit">Salvar</button>
-    </form>
+
+
+    @isset($sucesso)
+    <h1> {{$sucesso}} </h1>
+    @endisset
+
+
+</form> 
+
+@isset($cursos)
+            @foreach($cursos as $curso)
+                    <h3>{{ $curso->nome  }}</h3>
+            @endforeach
+@endisset
+
 
     
 </div>

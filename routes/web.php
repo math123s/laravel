@@ -46,5 +46,14 @@ Route::prefix('/curso')->group(function(){
 });
 
 
+// Criando uma rota prófessor
+
+Route::prefix('/professor')->group(function(){
+    Route::get('/index', [App\Http\Controllers\ProfessorController::class, 'index'])->name('professor.index');
+    Route::post('/adicionar', [App\Http\Controllers\ProfessorController::class, 'adicionar'])->name('professor.adicionar');
+    Route::post('/remover', [App\Http\Controllers\ProfessorController::class, 'remover'])->name('professor.remover');
+    Route::post('/atualizar', [App\Http\Controllers\ProfessorController::class, 'atualizar'])->name('professor.atualizar');
+    Route::get('/consultar', [App\Http\Controllers\Principal::class, 'principal'])->name('professor.consultar');
+});
 
 
