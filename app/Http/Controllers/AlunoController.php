@@ -18,7 +18,7 @@ class AlunoController extends Controller
 
         $aluno = new \App\Models\AlunoModel();
 
-        return view('aluno.index', ['sucesso'=>'Cadastrado!', 'alunos' =>$alunos::all()]);
+        return view('aluno.index', ['sucesso'=>'Cadastrado!', 'alunos' =>$aluno::all()]);
     
     }
 

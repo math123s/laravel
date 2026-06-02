@@ -5,13 +5,9 @@
     <label for="Nome">Nome</label>
     <input type="text" name="nome" id="nome">
 
-
-    <label for="email">E-mail</label>
-    <input type="email" name="email" id="email">
-
     <button type="submit">Salvar</button>
-    @isset($sucesso)
-    <h1> {{$sucesso}} </h1>
+    @isset($sucess)
+    <h1> {{$sucess}} </h1>
     @endisset
 
 

@@ -46,7 +46,7 @@ Route::prefix('/curso')->group(function(){
 });
 
 
-// Criando uma rota prófessor
+// Criando uma rota professor
 
 Route::prefix('/professor')->group(function(){
     Route::get('/index', [App\Http\Controllers\ProfessorController::class, 'index'])->name('professor.index');
@@ -56,4 +56,23 @@ Route::prefix('/professor')->group(function(){
     Route::get('/consultar', [App\Http\Controllers\Principal::class, 'principal'])->name('professor.consultar');
 });
 
+// Criando uma rota componente
 
+Route::prefix('/componente')->group(function(){
+    Route::get('/index', [App\Http\Controllers\ComponenteController::class, 'index'])->name('componente.index');
+    Route::post('/adicionar', [App\Http\Controllers\ComponenteController::class, 'adicionar'])->name('componente.adicionar');
+    Route::post('/remover', [App\Http\Controllers\ComponenteController::class, 'remover'])->name('componente.remover');
+    Route::post('/atualizar', [App\Http\Controllers\ComponenteController::class, 'atualizar'])->name('componente.atualizar');
+    Route::get('/consultar', [App\Http\Controllers\Principal::class, 'principal'])->name('componente.consultar');
+});
+
+
+// Criando uma rota admionistrador
+Route::prefix('/administrador')->group(function(){
+    Route::get('/index', [App\Http\Controllers\AdministradorController::class, 'index'])->name('administrador.index');
+    Route::post('/adicionar', [App\Http\Controllers\AdministradorDController::class, 'adicionar'])->name('administrador.adicionar');
+    Route::post('/remover', [App\Http\Controllers\AdministradorDController::class, 'remover'])->name('administrador.remover');
+    Route::post('/atualizar', [App\Http\Controllers\AdministradorDController::class, 'atualizar'])->name('administrador.atualizar');
+    Route::get('/consultar', [App\Http\Controllers\Principal::class, 'principal'])->name('administrador.consultar');
+});
+            
