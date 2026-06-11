@@ -18,13 +18,34 @@
 
 </form> 
 
-@isset($cursos)
-            @foreach($cursos as $curso)
-                    <h3>{{ $curso->nome  }}</h3>
-            @endforeach
-@endisset
-
-
+<table border="1">
+        <tr>
+            <td>Nome do Aluno</td>
+            <td colspan="2">Ações</td>
+        </tr>
+        @isset($cursos)
+                @foreach($cursos as $curso)
+                    <tr>
+                        <td>
+                            <h3>{{ $curso->nome }}</h3>
+                        </td>
+                        <td>
+                            <h3>{{ $curso->periodo }}</h3>
+                        </td>
+                        <td>
+                        <form action="{{ route('curso.remove', ['id' => $curso->id]) }}" method="GET">
+                                <button type="submit">Remover</button>
+                            </form> 
+                        </td>
+                        <td>
+                        <form action="{{ route('curso.atualizar', ['id' => $curso->id]) }}" method="GET">
+                                <button type="submit">Atualizar</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+        @endisset
+    </table>
     
 </div>
 

@@ -6,19 +6,34 @@ use Illuminate\Http\Request;
 
 class ComponenteController extends Controller
 {
-    function index () {
+    function index(){ 
         return view('componente.index');
     }
 
-    function adicionar (Request $dados) {
+    function add(Request $dados) { 
         $componente = new \App\Models\ComponenteModel();
         $componente::create($dados->all());
 
-        //Recuperando todos os componentes do banco e enviando para A View
+        //RECUPERANDO TODOS OS COMPONENTES DO BANCO E ENVIANDO PARA A VIEW
+        $componentes = new \App\Models\ComponenteModel();
 
-        $componente = new \App\Models\ComponenteModel();
-
-        return view('componente.index', ['sucesso'=>'Cadastrado!', 'componentes' =>$componentes::all()]);
-    
+        return view('componente.index', ['success'=>'Cadastrado!', 'componentes'=>$componentes::all()]);
     }
+
+    function remove(string $id) {
+        $componente = new \App\Models\ComponenteModel();
+        $componente::destroy($id);
+
+        return view('componente.index', ['success'=>'Removido!', 'componentes'=>$componente::all()]);
+
+    }
+    
+    function atualizar(string $id) {
+        $componente = new \App\Models\ComponenteModel();
+        $componente = $componente::find($id);
+
+        return view('componente.atualizar', ['componente'=>$componente]);
+    }
+
+    
 }

@@ -10,22 +10,19 @@
     <input type="email" name="email" id="email">
 
     <label for="telefone">telefone</label>
-    <input type="telefone" name="telefone" id="telefone">
-
-    <label for="telefone">E-mail</label>
-    <input type="telefone" name="telefone" id="telefone">
+    <input type="text" name="telefone" id="telefone">
 
     <label for="cpf">CPF</label>
-    <input type="cpf" name="cpf" id="cpf">
+    <input type="text" name="cpf" id="cpf">
 
     <label for="usuario">Usuario</label>
-    <input type="usuario" name="usuario" id="usuario">
+    <input type="text" name="usuario" id="usuario">
 
     <label for="senha">Senha</label>
-    <input type="senha" name="senha" id="senha">
+    <input type="password" name="senha" id="senha">
 
     <label for="status">Status</label>
-    <input type="status" name="status" id="status">
+    <input type="text" name="status" id="status">
 
 
     <button type="submit">Salvar</button>
@@ -36,12 +33,47 @@
 
 </form>
 
-@isset($administradors)
-            @foreach($administradors as $administrador)
-                    <h3>{{ $administrador->nome  }}</h3>
-            @endforeach
-@endisset
-
-
+<table border="1">
+        <tr>
+            <td>Nome do Aluno</td>
+            <td colspan="2">Ações</td>
+        </tr>
+        @isset($administradores)
+                @foreach($administradores as $administrador)
+                    <tr>
+                        <td>
+                            <h3>{{ $administrador->nome }}</h3>
+                        </td>
+                        <td>
+                            <h3>{{ $administrador->email }}</h3>
+                        </td>
+                        <td>
+                            <h3>{{ $administrador->telefone }}</h3>
+                        </td>
+                        <td>
+                            <h3>{{ $administrador->cpf }}</h3>
+                        </td>
+                        <td>
+                            <h3>{{ $administrador->usuario }}</h3>
+                        </td>
+                        <td>
+                            <h3>{{ $administrador->senha }}</h3>
+                        </td>
+                        <td>
+                            <h3>{{ $administrador->status }}</h3>
+                        </td>
+                        <td>
+                            <form action="{{ route('administrador.remove', ['id' => $administrador->id]) }}" method="GET">
+                                <button type="submit">Remover</button>
+                            </form>
+                        </td>
+                        <td><form action="{{ route('administrador.atualizar', ['id' => $administrador->id]) }}" method="GET">
+                                <button type="submit">Atualizar</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+        @endisset
+    </table>
 
 </div>

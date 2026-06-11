@@ -21,5 +21,20 @@ class AlunoController extends Controller
         return view('aluno.index', ['sucesso'=>'Cadastrado!', 'alunos' =>$aluno::all()]);
     
     }
+    
+    function remove(string $id) {
+        $aluno = new \App\Models\AlunoModel();
+        $aluno::destroy($id);
+
+        return view('aluno.index', ['success'=>'Removido!', 'alunos'=>$aluno::all()]);
+
+    }
+
+    function atualizar(string $id) {
+        $aluno = new \App\Models\AlunoModel();
+        $aluno = $aluno::find($id);
+
+        return view('aluno.atualizar', ['aluno'=>$aluno]);
+    }
 
 }

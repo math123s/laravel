@@ -17,7 +17,22 @@ class ProfessorController extends Controller
             $professor = new \App\Models\ProfessorModel();
         
         //     return view('professor.index', ['sucesso'=>'Cadastrado!', 'professores' =>$professores::all()]);
+        return view('professor.index', ['success'=>'Cadastrado!', 'professores'=>$professores::all()]);
     }
 
+    function remove(string $id) {
+        $professor = new \App\Models\ProfessorModel();
+        $professor::destroy($id);
+
+        return view('professor.index', ['success'=>'Removido!', 'professores'=>$professor::all()]);
+
+    }
+
+    function atualizar(string $id) {
+        $professor = new \App\Models\ProfessorModel();
+        $professor = $professor::find($id);
+
+        return view('professor.atualizar', ['professor'=>$professor]);
+    }
 
 }

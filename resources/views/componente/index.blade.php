@@ -6,10 +6,10 @@
     <input type="text" name="nome" id="nome">
 
 
-    <label for="hora_inicio">E-mail</label>
+    <label for="hora_inicio">hora inicio</label>
     <input type="hora_inicio" name="hora_inicio" id="hora_inicio">
 
-    <label for="hora_fim">E-mail</label>
+    <label for="hora_fim">hora fim</label>
     <input type="hora_fim" name="hora_fim" id="hora_fim">
 
     <button type="submit">Salvar</button>
@@ -20,11 +20,25 @@
 
 </form>
 
-@isset($componentes)
-            @foreach($componentes as $componente)
-                    <h3>{{ $componente->nome  }}</h3>
-            @endforeach
-@endisset
+        @isset($componente)
+                @foreach($componente as $componente)
+                    <tr>
+                        <td>
+                            <h3>{{ $componente->nome }}</h3>
+                        </td>
+                        <td>
+                        <form action="{{ route('componente.remove', ['id' => $componente->id]) }}" method="GET">
+                                <button type="submit">Remover</button>
+                            </form> 
+                        </td>
+                        <td>
+                        <form action="{{ route('componente.atualizar', ['id' => $componente->id]) }}" method="GET">
+                                <button type="submit">Atualizar</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+        @endisset
 
 
 
