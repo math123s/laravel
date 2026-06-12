@@ -17,12 +17,12 @@ Route::get('/', [App\Http\Controllers\Principal::class, 'principal']);
 
 
 /* Usado para criar grupos */
-Route::prefix('/aluno' )->group(function(){
-    Route::get('/index', [App\Http\Controllers\AlunoController::class, 'index'])->name('aluno.index');
-    Route::post('/adicionar', [App\Http\Controllers\AlunoController::class, 'adicionar'])->name('aluno.adicionar');
-    Route::post('/remover', [App\Http\Controllers\AlunoController::class, 'remover'])->name('aluno.remover');
-    Route::post('/atualizar', [App\Http\Controllers\AlunoController::class, 'atualizar'])->name('aluno.atualizar');
-    Route::get('/consultar', [App\Http\Controllers\Principal::class, 'principal'])->name('aluno.consultar');
+Route::prefix('/persona' )->group(function(){
+    Route::get('/index', [App\Http\Controllers\PersonaController::class, 'index'])->name('persona.index');
+    Route::post('/adicionar', [App\Http\Controllers\PersonaController::class, 'adicionar'])->name('Persona.adicionar');
+    Route::post('/remover', [App\Http\Controllers\PersonaController::class, 'remover'])->name('Persona.remover');
+    Route::post('/atualizar', [App\Http\Controllers\PersonaController::class, 'atualizar'])->name('Persona.atualizar');
+    Route::get('/consultar', [App\Http\Controllers\Principal::class, 'principal'])->name('Persona.consultar');
 
 });
 
