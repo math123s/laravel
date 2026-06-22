@@ -1,21 +1,24 @@
 <div>
-<div>
-    <form action="{{ route('aluno.add') }}" method="post">
+    <form action="{{ route('curso.adicionar') }}" method="post">
         @csrf
         <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome">
+        <input type="text" name="nome" id="nome" value="{{ old('nome') }}">
        
         <label for="periodo">Periodo</label>
-        <input type="time" name="periodo" id="periodo">
+        <input type="time" name="periodo" id="periodo"  value="{{ old('periodo') }}">
 
         <button type="submit">Salvar</button>
 
-
-    @isset($sucesso)
-    <h1> {{$sucesso}} </h1>
+    @isset($sucess)
+    <h1> {{$sucess}} </h1>
     @endisset
-
-
+    @if($errors->any())
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
 </form> 
 
 <table border="1">
@@ -49,4 +52,3 @@
     
 </div>
 
-</div>

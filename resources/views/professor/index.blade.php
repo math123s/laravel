@@ -2,7 +2,7 @@
     <form action="{{ route('professor.adicionar') }}" method="post">
         @csrf
         <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome">
+        <input type="text" name="nome" id="nome" value="{{ old('nome') }}">
 
         <label for="email">Email</label>
         <input type="email" name="email" id="email">
@@ -15,6 +15,13 @@
     @isset($sucesso)
     <h1> {{$sucesso}} </h1>
     @endisset
+    if($errors->any())
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
 
 
 </form>
