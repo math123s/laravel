@@ -23,8 +23,6 @@
                 @endforeach
             </ul>
         @endif
-
-
 </form>
 
         @isset($componente)

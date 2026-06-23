@@ -8,7 +8,21 @@ use Illuminate\Support\Facades\Validator;
 class ComponenteController extends Controller
 {
     function index(){ 
-        $validator = Validator::make(
+       
+      if ($validator->fails()) {
+          return redirect()
+              ->route('componente.index')
+              ->withErrors($validator)
+              ->withInput();
+      }
+        $componente = new \App\Models\ComponenteModel();
+
+        return view('componente.index', ['componentes'=>$componente::all()]);
+    }
+
+    function adicionar(Request $dados) { 
+
+     $validator = Validator::make(
             $dados->all(),
               [
                   'nome' => 'required|min:3|max:255',
@@ -22,18 +36,7 @@ class ComponenteController extends Controller
               ]
       );
 
-      if ($validator->fails()) {
-          return redirect()
-              ->route('aluno.index')
-              ->withErrors($validator)
-              ->withInput();
-      }
-        $componente = new \App\Models\ComponenteModel();
 
-        return view('componente.index', ['componentes'=>$componente::all()]);
-    }
-
-    function add(Request $dados) { 
         $componente = new \App\Models\ComponenteModel();
         $componente::create($dados->all());
 

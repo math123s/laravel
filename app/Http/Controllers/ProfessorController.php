@@ -25,12 +25,22 @@ class ProfessorController extends Controller
                   'nome.required' => 'O campo nome é obrigatório.',
                   'nome.min' => 'O campo nome deve conter no mínimo 3 caracteres.',
                   'nome.max' => 'O campo nome deve conter no máximo 255 caracteres.',
+              ],
+              [
+                    'email.required' => 'O campo email é obrigatorio.',
+                    'email.min' => 'O campo email deve ter no mínimo 11',
+                    'email.max' => 'O campo email deve ter no máximo 255',
+              ]
+              [
+                    'telefone.required' => 'O campo telefone é obrigatorio.',
+                    'telefone.min' => 'O campo telefone deve ter no mínimo 13',
+                    'telefone.max' => 'O campo telefone deve ter no máximo 255',
               ]
       );
 
       if ($validator->fails()) {
           return redirect()
-              ->route('aluno.index')
+              ->route('professor.index')
               ->withErrors($validator)
               ->withInput();
       }

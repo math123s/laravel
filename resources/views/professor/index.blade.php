@@ -22,8 +22,6 @@
                 @endforeach
             </ul>
         @endif
-
-
 </form>
 
 @isset($professores)
