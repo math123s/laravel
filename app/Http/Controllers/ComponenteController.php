@@ -7,7 +7,13 @@ use Illuminate\Support\Facades\Validator;
 
 class ComponenteController extends Controller
 {
-   
+    function index(){ 
+
+
+          $componente = new \App\Models\ComponenteModel();
+  
+          return view('componente.index', ['componentes'=>$componente::all()]);
+      }
 
     function adicionar(Request $dados) { 
 
@@ -25,20 +31,13 @@ class ComponenteController extends Controller
               ]
       );
 
-           function index(){ 
       if ($validator->fails()) {
-          return redirect()
-              ->route('componente.index')
-              ->withErrors($validator)
-              ->withInput();
-      }
-        $componente = new \App\Models\ComponenteModel();
-
-        return view('componente.index', ['componentes'=>$componente::all()]);
-    }
+        return redirect()
+            ->route('componente.index')
+            ->withErrors($validator)
+            ->withInput();
+     }
     
-
-
         $componente = new \App\Models\ComponenteModel();
         $componente::create($dados->all());
 

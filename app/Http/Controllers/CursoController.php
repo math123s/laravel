@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Validator;
 class CursoController extends Controller
 {
     function index(){ 
+
+
+      
+
         $curso = new \App\Models\CursoModel();
 
         return view('curso.index', ['cursos'=>$curso::all()]);
@@ -31,22 +35,22 @@ class CursoController extends Controller
                 'periodo.max' => 'O campo periodo deve ter no máximo 255. ',
               ]
       );
-
       if ($validator->fails()) {
-          return redirect()
-              ->route('curso.index')
-              ->withErrors($validator)
-              ->withInput();
-      }
+        return redirect()
+            ->route('curso.index')
+            ->withErrors($validator)
+            ->withInput();
+    }
+
+
         $curso = new \App\Models\CursoModel();
         $curso::create($dados->all());
-
 
 
         
         $curso = new \App\Models\CursoModel();
 
-        return view('curso.index', ['sucesso'=>'Cadastrado!', 'curso' =>$curso::all()]);
+        return view('curso.index', ['sucesso'=>'Cadastrado!', 'cursos' =>$curso::all()]);
     
     }
 
@@ -55,7 +59,7 @@ class CursoController extends Controller
         $curso = new \App\Models\CursoModel();
         $curso::destroy($id);
 
-        return view('curso.index', ['success'=>'Removido!', 'curso'=>$curso::all()]);
+        return view('curso.index', ['success'=>'Removido!', 'cursos'=>$curso::all()]);
 
     }
 
@@ -69,7 +73,7 @@ class CursoController extends Controller
     function save(Request $dados) {
         $curso = new \App\Models\CursoModel();
         $curso = $curso::find($dados->id);
-        $curso->update($dadoscurso->all());
+        $curso->update($dados->all());
 
         return view('curso.index', ['success'=>'Atualizado!', 'cursos'=>$curso::all()]);
     }

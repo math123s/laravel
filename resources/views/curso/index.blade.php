@@ -9,8 +9,8 @@
 
         <button type="submit">Salvar</button>
 
-    @isset($sucess)
-    <h1> {{$sucess}} </h1>
+    @isset($sucesso)
+    <h1> {{$sucesso}} </h1>
     @endisset
     @if($errors->any())
             <ul>
