@@ -8,7 +8,24 @@ use Illuminate\Support\Facades\Validator;
 class AdministradorController extends Controller
 {
     function index(){ 
-        $validator = Validator::make(
+ 
+
+      if ($validator->fails()) {
+          return redirect()
+              ->route('administrador.index')
+              ->withErrors($validator)
+              ->withInput();
+      }
+        $administrador = new \App\Models\AdministradorModel();
+
+        return view('administrador.index', ['administradores'=>$administrador::all()]);
+    }
+
+    function adicionar (Request $dados) {
+        $administrador = new \App\Models\AdministradorModel();
+        $administrador::create($dados->all());
+
+               $validator = Validator::make(
             $dados->all(),
               [
                   'nome' => 'required|min:3|max:255',
@@ -26,21 +43,6 @@ class AdministradorController extends Controller
                   'nome.max' => 'O campo nome deve conter no máximo 255 caracteres.',
               ]
       );
-
-      if ($validator->fails()) {
-          return redirect()
-              ->route('administrador.index')
-              ->withErrors($validator)
-              ->withInput();
-      }
-        $administrador = new \App\Models\AdministradorModel();
-
-        return view('administrador.index', ['administradores'=>$administrador::all()]);
-    }
-
-    function adicionar (Request $dados) {
-        $administrador = new \App\Models\AdministradorModel();
-        $administrador::create($dados->all());
 
         //Recuperando todos os administradors do banco e enviando para A View
 

@@ -1,11 +1,11 @@
 <div>
-    <form action="{{ route('aluno.save') }}" method="post">
+    <form action="{{ route('curso.save') }}" method="post">
         @csrf
 
-        <input type="hidden" name="id" value="{{ $aluno->id }}">
+        <input type="hidden" name="id" value="{{ $curso->id }}">
 
         <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome" value="{{ $aluno->nome }}">
+        <input type="text" name="nome" id="nome" value="{{ $curso->nome }}">
         <label for="periodo">Período</label>
         <input type="text" name="periodo" id="periodo" value="{{ $aluno->periodo }}">
 

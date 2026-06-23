@@ -7,18 +7,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ComponenteController extends Controller
 {
-    function index(){ 
-       
-      if ($validator->fails()) {
-          return redirect()
-              ->route('componente.index')
-              ->withErrors($validator)
-              ->withInput();
-      }
-        $componente = new \App\Models\ComponenteModel();
-
-        return view('componente.index', ['componentes'=>$componente::all()]);
-    }
+   
 
     function adicionar(Request $dados) { 
 
@@ -35,6 +24,19 @@ class ComponenteController extends Controller
                   'nome.max' => 'O campo nome deve conter no máximo 255 caracteres.',
               ]
       );
+
+           function index(){ 
+      if ($validator->fails()) {
+          return redirect()
+              ->route('componente.index')
+              ->withErrors($validator)
+              ->withInput();
+      }
+        $componente = new \App\Models\ComponenteModel();
+
+        return view('componente.index', ['componentes'=>$componente::all()]);
+    }
+    
 
 
         $componente = new \App\Models\ComponenteModel();
@@ -69,5 +71,5 @@ class ComponenteController extends Controller
         return view('componente.index', ['success'=>'Atualizado!', 'componentes'=>$componente::all()]);
     }
 
-    
+
 }

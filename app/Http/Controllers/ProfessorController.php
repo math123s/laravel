@@ -10,7 +10,7 @@ class ProfessorController extends Controller
     function index(){ 
         $professor = new \App\Models\ProfessorModel();
 
-        return view('professor.index', ['professors'=>$professor::all()]);
+        return view('professor.index', ['professores'=>$professor::all()]);
     }
 
     function adicionar(Request $dados ) {

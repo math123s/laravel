@@ -1,15 +1,15 @@
 <div>
-    <form action="{{ route('aluno.save') }}" method="post">
+    <form action="{{ route('professor.save') }}" method="post">
         @csrf
 
-        <input type="hidden" name="id" value="{{ $aluno->id }}">
+        <input type="hidden" name="id" value="{{ $professor->id }}">
 
         <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome" value="{{ $aluno->nome }}">
+        <input type="text" name="nome" id="nome" value="{{ $professor->nome }}">
         <label for="email">Email</label>
-        <input type="text" name="email" id="email" value="{{ $aluno->email }}">
+        <input type="text" name="email" id="email" value="{{ $professor->email }}">
         <label for="telefone">Telefone</label>
-        <input type="text" name="telefone" id="telefone" value="{{ $aluno->telefone }}">
+        <input type="text" name="telefone" id="telefone" value="{{ $professor->telefone }}">
 
         <button type="submit">Salvar</button>
         @isset($success)
