@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('alunos', function (Blueprint $table) {
+        Schema::create('aluno', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('nome');
@@ -24,6 +24,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('alunos');
+        //Os dois nomes tem que ser o mesmo nome do modelo
+        Schema::dropIfExists('aluno');
+        // quando vc faz o php artisan migrate::rollback apaga a tabela
     }
 };
